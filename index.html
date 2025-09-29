@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Affiliate Form Platform - Earn money by sharing your referral link." />
+  <meta name="keywords" content="Affiliate, Marketing, Earn Money, Referral, Online Income" />
+  <meta name="author" content="Polo Tech and Media Enterprise" />
+  <meta property="og:title" content="Affiliate Form Platform" />
+  <meta property="og:description" content="Join thousands of people earning online by simply sharing your referral link." />
+  <meta property="og:image" content="images/og-image.png" />
+  <link rel="icon" href="images/favicon-32x32.png" type="image/png">
+  <title>Affiliate Form Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 text-white">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 shadow py-4 bg-[#50c878]">
+    <div class="max-w-6xl mx-auto px-4 flex items-center justify-between">
+      
+      <!-- Logo + Brand (stacked under logo) -->
+      <div class="flex flex-col items-start space-y-1">
+        <img 
+          src="/images/logo9.png" 
+          alt="PoloTechMedia Logo" 
+          class="h-10 sm:h-14 md:h-16 lg:h-20 w-auto object-contain"
+        />
+        <h1 class="bg-gradient-to-r from-yellow-400 via-white to-indigo-700 bg-clip-text text-transparent font-bold text-xl sm:text-2xl tracking-tight">
+          PoloTechMedia
+        </h1>
+        <h2 class="text-sm sm:text-base font-semibold text-white">
+          Freedom Network
+        </h2>
+        <p class="text-xs sm:text-sm text-gray-200 italic -mt-1">
+          Empowering Your Digital Journey
+        </p>
+      </div>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex space-x-8 text-lg font-medium text-white">
+        <a href="index.html" class="hover:text-yellow-300">Home</a>
+        <a href="form.html" class="hover:text-yellow-300">Form</a>
+        <a href="terms.html" class="hover:text-yellow-300">Terms</a>
+        <a href="about.html" class="hover:text-yellow-300">About</a>
+        <a href="login.html" class="hover:text-yellow-300">Login</a>
+      </nav>
+
+      <!-- Mobile Hamburger -->
+      <button id="menu-btn" class="md:hidden focus:outline-none">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu (slide from right) -->
+    <div id="menu" class="fixed top-0 right-0 h-full w-64 bg-indigo-700 transform translate-x-full transition-transform duration-300 ease-in-out z-40">
+      <div class="flex flex-col items-start px-6 py-6 space-y-4">
+        <button id="close-btn" class="self-end text-white">
+          ✕
+        </button>
+        <a href="index.html" class="block py-2 text-white hover:text-yellow-300">Home</a>
+        <a href="form.html" class="block py-2 text-white hover:text-yellow-300">Form</a>
+        <a href="terms.html" class="block py-2 text-white hover:text-yellow-300">Terms</a>
+        <a href="about.html" class="block py-2 text-white hover:text-yellow-300">About</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-white py-16 text-center">
+    <div class="max-w-3xl mx-auto px-6">
+      <h1 class="text-4xl font-extrabold text-indigo-700 mb-4">Earn Money Online with Ease</h1>
+      <p class="text-lg text-gray-600 mb-6">
+        Join thousands of people earning online by simply sharing your referral link.
+      </p>
+      <a href="form.html" class="bg-indigo-700 text-white px-6 py-3 rounded-lg shadow hover:bg-indigo-800">
+        Get Started Now
+      </a>
+    </div>
+  </section>
+
+  <!-- Intro Video -->
+  <section class="max-w-4xl mx-auto px-6 py-12 text-center">
+    <h2 class="text-2xl font-bold text-indigo-700 mb-2">Click to Watch!</h2>
+    <p class="text-gray-600 mb-6">
+      Watch this short video to learn how affiliate marketing works and how you can start today.
+    </p>
+    <div class="relative pb-[56.25%] h-0 overflow-hidden rounded-lg shadow-lg">
+      <iframe 
+        class="absolute top-0 left-0 w-full h-full" 
+        src="https://www.youtube.com/embed/7vzdpz2xS8s" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="bg-gray-100 py-16">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10 text-center">
+      <div class="bg-white rounded-xl shadow p-6">
+        <h3 class="text-xl font-semibold text-indigo-700 mb-2">1. Buy the Form</h3>
+        <p class="text-gray-600">Get started with a one-time purchase of just $5 to unlock your account.</p>
+      </div>
+      <div class="bg-white rounded-xl shadow p-6">
+        <h3 class="text-xl font-semibold text-indigo-700 mb-2">2. Share Your Link</h3>
+        <p class="text-gray-600">Invite friends and others to join using your referral link.</p>
+      </div>
+      <div class="bg-white rounded-xl shadow p-6">
+        <h3 class="text-xl font-semibold text-indigo-700 mb-2">3. Earn & Withdraw</h3>
+        <p class="text-gray-600">Earn commissions when referrals buy the form, and withdraw once you reach $5.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="bg-indigo-700 text-white py-16 text-center">
+    <h2 class="text-3xl font-bold mb-4">Ready to Start Earning?</h2>
+    <p class="mb-6">Sign up today and begin your journey to financial freedom.</p>
+    <a href="form.html" class="bg-white text-indigo-700 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100">
+      Join Now
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-indigo-700 text-white py-6 mt-12">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-sm">&copy; 2025 Polo Tech and Media Enterprise. All rights reserved.</p>
+      <div class="flex space-x-6 mt-4 md:mt-0">
+        <a href="privacy.html" class="hover:text-gray-200">Privacy Policy</a>
+        <a href="contact.html" class="hover:text-gray-200">Contact</a>
+      </div>
+      <p class="text-sm text-gray-200 md:ml-auto md:mt-0 mt-6">A project by <strong>Polo Tech and Media Enterprise</strong>.</p>
+    </div>
+  </footer>
+
+  <!-- Script for Hamburger -->
+  <script>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
+    const closeBtn = document.getElementById('close-btn');
+
+    btn.addEventListener('click', () => {
+      menu.classList.remove('translate-x-full');
+      menu.classList.add('translate-x-0');
+    });
+
+    closeBtn.addEventListener('click', () => {
+      menu.classList.remove('translate-x-0');
+      menu.classList.add('translate-x-full');
+    });
+  </script>
+
+</body>
+</html>

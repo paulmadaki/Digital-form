@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Affiliate Messages</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="images/favicon-32x32.png" type="image/png">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans leading-relaxed">
+  <section class="max-w-3xl mx-auto my-8 p-6 bg-white rounded-xl shadow-md sm:p-8">
+    <h1 class="text-2xl sm:text-3xl font-bold text-center mb-6 text-gray-800">
+      Messages to Send to Friends and Family
+    </h1>
+
+    <!-- Personal Message -->
+    <article class="mb-6">
+      <h2 class="text-lg font-semibold text-blue-600 mb-2">Personal Message</h2>
+      <div class="relative">
+        <blockquote id="msg1" class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-md italic">
+          Excellent opportunity!<br><br>
+          Hi [Friend’s Name], how are you doing? I hope all is well with you. I recently came across a company online that sells digital products. I decided to give it a try, and to my surprise, I actually got paid! 💰<br><br>
+          The good part is, they allow anyone who buys their product to also become an affiliate and earn by simply sharing a unique link. I thought you might be interested too, since it’s something you can do from your phone and at your own pace.<br><br>
+          Here’s my referral link: [Insert Your Unique Link]<br>
+          Check it out and let me know what you think. If you have questions, I’ll be happy to explain more. 😊
+        </blockquote>
+        <button 
+          class="absolute top-2 right-2 bg-blue-600 hover:bg-blue-700 text-white text-sm px-3 py-1 rounded shadow" 
+          aria-label="Copy personal message" 
+          onclick="copyMessage('msg1')">
+          Copy
+        </button>
+      </div>
+    </article>
+
+    <!-- Social Media Message -->
+    <article class="mb-6">
+      <h2 class="text-lg font-semibold text-blue-600 mb-2">Sample Social Media Message</h2>
+      <div class="relative">
+        <blockquote id="msg2" class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-md italic">
+           Exciting Opportunity! <br><br>
+          I recently discovered a platform that sells digital products, and the best part is that they reward you for sharing! 🙌 I’ve already started earning, and it’s something anyone can do from their phone.<br><br>
+          👉 Check it out here: [Insert Your Referral Link]<br><br>
+          If you’re looking for a simple way to earn extra income online, this could be perfect for you. 🌍💡
+        </blockquote>
+        <button 
+          class="absolute top-2 right-2 bg-blue-600 hover:bg-blue-700 text-white text-sm px-3 py-1 rounded shadow" 
+          aria-label="Copy social media message" 
+          onclick="copyMessage('msg2')">
+          Copy
+        </button>
+      </div>
+    </article>
+
+    <!-- Platform Specific -->
+    <article>
+      <h2 class="text-lg font-semibold text-blue-600 mb-2">Platform-Specific Messages</h2>
+      <ul class="space-y-4">
+        <li id="msg3" class="relative bg-gray-50 p-4 rounded-lg shadow hover:shadow-lg transition">
+          <strong class="block mb-2 text-blue-600">
+             1. WhatsApp / Direct Message</strong>
+          Hey fam 👋 I just joined a platform that sells digital products, and I already started earning from it 🙌. You can also do it with just your phone.<br>
+          👉 Check it out here: [Insert Your Referral Link]
+          <button 
+            class="absolute top-2 right-2 bg-blue-600 hover:bg-blue-700 text-white text-sm px-3 py-1 rounded shadow" 
+            aria-label="Copy WhatsApp message" 
+            onclick="copyMessage('msg3')">
+            Copy
+          </button>
+        </li>
+
+        <li id="msg4" class="relative bg-gray-50 p-4 rounded-lg shadow hover:shadow-lg transition">
+          <strong class="block mb-2 text-blue-600"> 2. Facebook Post</strong>
+          Hey everyone! I wanted to share something exciting I recently discovered. I joined a platform that sells digital products, and the best part is that they reward you for sharing it with others! I’ve already started earning, and it’s something anyone can do from their phone at their own pace.<br><br>
+          If you’re looking for a simple way to earn extra income online, this could be perfect for you.<br>
+          👉 Check it out here: [Insert Your Referral Link]<br>
+          Feel free to reach out if you have any questions!
+          <button 
+            class="absolute top-2 right-2 bg-blue-600 hover:bg-blue-700 text-white text-sm px-3 py-1 rounded shadow" 
+            aria-label="Copy Facebook message" 
+            onclick="copyMessage('msg4')">
+            Copy
+          </button>
+        </li>
+
+        <li id="msg5" class="relative bg-gray-50 p-4 rounded-lg shadow hover:shadow-lg transition">
+          <strong class="block mb-2 text-blue-600"> 3. LinkedIn Post</strong>
+          I’ve recently partnered with a digital products company that also provides an affiliate program. After testing it myself, I can confidently say it’s a legitimate way to earn extra income online.<br><br>
+          If you’re interested in exploring opportunities in the digital economy, you can check it out here: [Insert Your Referral Link]<br><br>
+          Happy to share more details with anyone curious about how it works!
+          <button 
+            class="absolute top-2 right-2 bg-blue-600 hover:bg-blue-700 text-white text-sm px-3 py-1 rounded shadow" 
+            aria-label="Copy LinkedIn message" 
+            onclick="copyMessage('msg5')">
+            Copy
+          </button>
+        </li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-4 right-4 hidden bg-green-600 text-white px-4 py-2 rounded shadow-lg">
+     Message copied to clipboard!
+  </div>
+
+  <script>
+    function copyMessage(id) {
+      const el = document.getElementById(id);
+      let text = el.textContent;
+      if (el.tagName === 'LI') {
+        const btn = el.querySelector('button');
+        if (btn) text = text.replace(btn.textContent, '').trim();
+      }
+      navigator.clipboard.writeText(text).then(() => {
+        showToast();
+      });
+    }
+
+    function showToast() {
+      const toast = document.getElementById("toast");
+      toast.classList.remove("hidden");
+      toast.classList.add("opacity-100");
+
+      setTimeout(() => {
+        toast.classList.add("hidden");
+      }, 2000);
+    }
+  </script>
+</body>
+</html>

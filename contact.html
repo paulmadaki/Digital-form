@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="icon" href="images/favicon-32x32.png" type="image/png">
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <section class="p-6 bg-white rounded-lg shadow-lg max-w-lg w-full">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4">Contact Us</h2>
+
+    <!-- Contact Form -->
+    <form id="contactForm" 
+          action="https://formspree.io/f/movnzvpq"    
+          method="POST" 
+          class="space-y-4">
+
+      <div>
+        <label class="block text-gray-700">Your Name</label>
+        <input type="text" name="name" required 
+               class="w-full p-2 border rounded-lg focus:ring focus:ring-blue-300" />
+      </div>
+
+      <div>
+        <label class="block text-gray-700">Your Email</label>
+        <input type="email" name="email" required 
+               class="w-full p-2 border rounded-lg focus:ring focus:ring-blue-300" />
+      </div>
+
+      <div>
+        <label class="block text-gray-700">Message</label>
+        <textarea name="message" rows="4" required 
+                  class="w-full p-2 border rounded-lg focus:ring focus:ring-blue-300"></textarea>
+      </div>
+
+      <!-- Submit Button with Spinner -->
+      <button id="submitBtn" type="submit" 
+              class="flex items-center justify-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+        <span id="btnText">Send Message</span>
+        <svg id="spinner" class="hidden w-5 h-5 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+        </svg>
+      </button>
+    </form>
+
+    <!-- Success Message -->
+    <p id="successMessage" class="hidden mt-4 text-green-600 font-semibold">
+      ✅ Your message has been sent successfully!
+    </p>
+  </section>
+
+  <script>
+    const form = document.getElementById("contactForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const btnText = document.getElementById("btnText");
+    const spinner = document.getElementById("spinner");
+    const successMessage = document.getElementById("successMessage");
+
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const data = new FormData(form);
+
+      // Show spinner + change text
+      btnText.textContent = "Sending...";
+      spinner.classList.remove("hidden");
+      submitBtn.disabled = true;
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          form.reset();
+          successMessage.classList.remove("hidden");
+
+          // Auto-hide success message after 5s
+          setTimeout(() => {
+            successMessage.classList.add("hidden");
+          }, 5000);
+        } else {
+          alert("❌ Something went wrong. Please try again.");
+        }
+      } catch (error) {
+        alert("⚠️ Network error. Please check your connection.");
+      }
+
+      // Reset button state
+      btnText.textContent = "Send Message";
+      spinner.classList.add("hidden");
+      submitBtn.disabled = false;
+    });
+  </script>
+
+</body>
+</html>
