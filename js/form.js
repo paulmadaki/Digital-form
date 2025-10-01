@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 🔐 Initialize Paystack
     const handler = PaystackPop.setup({
-      key: "pk_test_12df58e07e4fab48a969987ffe965bd683792a17", // replace for live
+      key: "pk_live_98e672f88208c8d3bb0c4bc7439883ad7e29ad94", // replace for live
       email: email || "",
       amount: amountInKobo(nairaAmount || 0),
       currency: "NGN",
