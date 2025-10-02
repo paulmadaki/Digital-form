@@ -277,7 +277,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ✅ Desktop → Inline, Mobile → Redirect
     if (isMobile()) {
-      handler.open();
+      handler.openIframe();
     } else {
       handler.openIframe();
     }
