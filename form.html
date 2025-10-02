@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Freedom Network</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://js.paystack.co/v1/inline.js"></script>
   <link rel="icon" href="images/favicon-32x32.png" type="image/png">
 </head>
 <body class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
@@ -21,11 +20,11 @@
         alt="PoloTechMedia Logo" 
         class="h-10 sm:h-14 md:h-16 lg:h-20 w-auto object-contain"/>
      <h1 class="bg-gradient-to-r from-yellow-400 via-white to-indigo-700 bg-clip-text text-transparent font-bold text-3xl tracking-tight">
-  PoloTechMedia
-</h1>
+       PoloTechMedia
+     </h1>
       <h1 class="text-sm sm:text-base font-semibold text-white">
         Freedom Network
-</h1>
+      </h1>
       <p class="text-xs sm:text-sm text-gray-200 italic -mt-1">Empowering Your Digital Journey</p>
     </div>
 
@@ -42,7 +41,6 @@
 
    <!-- Navbar container -->
 <div class="flex items-center justify-between px-4 py-2">
-  <!-- Logo (left side) -->
   
 <!-- Mobile Hamburger (right side) -->
 <button id="menu-btn" 
@@ -52,8 +50,7 @@
   <span class="absolute w-6 h-0.5 bg-black transition-all duration-300 ease-in-out top-6 group-[.open]:-rotate-45 group-[.open]:top-3"></span>
 </button>
 
-
-<!-- Mobile Menu (slides in from the right) -->
+<!-- Mobile Menu -->
 <div id="mobile-menu" 
      class="fixed top-0 right-0 h-full w-64 bg-[#50c878] p-6 space-y-4 transform translate-x-full transition-transform duration-300 ease-in-out z-40">
   <a href="index.html" class="block text-white hover:underline transition">Home</a>
@@ -149,20 +146,18 @@
 
       <p class="text-center mb-6 text-sm text-gray-600" id="rateInfo">Fetching current exchange rate...</p>
   
-     <input type="hidden" id="formPrice" value="5" />
+      <input type="hidden" id="formPrice" value="5" />
 
-<button id="paystackBtn" type="submit" 
-  class="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700">
-  Proceed to Payment
-</button>
+      <button id="paystackBtn" type="submit" 
+        class="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700">
+        Proceed to Payment
+      </button>
 
-<!-- Styled tip (shows on mobile + tablet, hidden on desktop) -->
-<div id="mobileTip" 
-  class="block md:hidden mt-3 p-3 rounded-lg bg-blue-50 border border-blue-200 text-sm text-blue-700">
-  💡 On mobile, tap <strong>"Pay with Card"</strong> to enter your card details.
-</div>
-
-
+      <!-- Mobile Tip -->
+      <div id="mobileTip" 
+        class="block md:hidden mt-3 p-3 rounded-lg bg-blue-50 border border-blue-200 text-sm text-blue-700">
+        💡 On mobile, tap <strong>"Pay with Card"</strong> to enter your card details.
+      </div>
 
       <p class="text-sm text-gray-600 text-center mt-4">
         By signing up, you agree to our 
@@ -178,7 +173,6 @@
 
   <!-- Scripts -->
   <script type="module" src="./js/form.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   
   <script>
     // Show/hide password functionality
@@ -226,24 +220,22 @@
   </style>
 
   <!-- Footer -->
-<footer class="bg-gray-900 mt-12">
-  <div class="max-w-6xl mx-auto px-6 py-8 text-center text-gray-400">
-    
-    <!-- Project info -->
-    <p class="text-lg font-semibold text-white">© 2025. <strong class="text-1xl md:text-1xl font-extrabold bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">Freedom Network</strong></p>
-    <p class="mt-2">A project by 
-      <a href="https://polotechmedia.com" target="_blank" 
-         class="text-blue-400 hover:underline font-medium">
-         Polo Tech and Media Enterprise
-      </a>
-    </p>
-
-   
-    
-  </div>
-</footer>
+  <footer class="bg-gray-900 mt-12">
+    <div class="max-w-6xl mx-auto px-6 py-8 text-center text-gray-400">
+      <p class="text-lg font-semibold text-white">
+        © 2025. 
+        <strong class="text-1xl md:text-1xl font-extrabold bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+          Freedom Network
+        </strong>
+      </p>
+      <p class="mt-2">A project by 
+        <a href="https://polotechmedia.com" target="_blank" 
+           class="text-blue-400 hover:underline font-medium">
+           Polo Tech and Media Enterprise
+        </a>
+      </p>
+    </div>
+  </footer>
  
-     
-
 </body>
 </html>

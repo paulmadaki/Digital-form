@@ -9,12 +9,11 @@ const SUPABASE_ANON_KEY =
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// Helper function Animation
+// Spinner Animation
 function showSpinner() {
   const spinner = document.getElementById("loading-spinner");
   if (spinner) spinner.style.display = "flex";
 }
-
 function hideSpinner() {
   const spinner = document.getElementById("loading-spinner");
   if (spinner) spinner.style.display = "none";
@@ -32,9 +31,7 @@ async function fetchExchangeRate() {
     const data = await res.json();
     exchangeRate = Number(data.rates.NGN);
 
-    const usdPrice = Number(
-      document.getElementById("formPrice")?.value || 5
-    );
+    const usdPrice = Number(document.getElementById("formPrice")?.value || 5);
     nairaAmount = Number((usdPrice * exchangeRate).toFixed(2));
 
     if (rateEl) {
@@ -43,7 +40,6 @@ async function fetchExchangeRate() {
       )} per $1)`;
     }
   } catch (err) {
-  // console.error("fetchExchangeRate error:", err);
     exchangeRate = 0;
     nairaAmount = 0;
     if (rateEl) rateEl.textContent = "Failed to fetch exchange rate.";
@@ -58,7 +54,10 @@ function ensurePaystack() {
     const s = document.createElement("script");
     s.src = "https://js.paystack.co/v1/inline.js";
     s.async = true;
-    s.onload = () => (window.PaystackPop ? resolve(window.PaystackPop) : reject(new Error("Paystack script loaded but PaystackPop not found")));
+    s.onload = () =>
+      window.PaystackPop
+        ? resolve(window.PaystackPop)
+        : reject(new Error("Paystack script loaded but PaystackPop not found"));
     s.onerror = () => reject(new Error("Failed to load Paystack script"));
     document.head.appendChild(s);
   });
@@ -69,19 +68,21 @@ const amountInKobo = (naira) => Math.round(Number(naira) * 100);
 function markPaymentProcessed(paystackRef) {
   if (!paystackRef) return;
   try {
-    const processed = JSON.parse(localStorage.getItem("processedPayments") || "[]");
+    const processed = JSON.parse(
+      localStorage.getItem("processedPayments") || "[]"
+    );
     if (!processed.includes(paystackRef)) {
       processed.push(paystackRef);
       localStorage.setItem("processedPayments", JSON.stringify(processed));
     }
-  } catch (e) {
-  // console.warn("Could not mark payment processed:", e);
-  }
+  } catch {}
 }
 function isPaymentProcessed(paystackRef) {
   if (!paystackRef) return false;
   try {
-    const processed = JSON.parse(localStorage.getItem("processedPayments") || "[]");
+    const processed = JSON.parse(
+      localStorage.getItem("processedPayments") || "[]"
+    );
     return processed.includes(paystackRef);
   } catch {
     return false;
@@ -93,23 +94,18 @@ const urlParams = new URLSearchParams(window.location.search);
 let urlReferrerCode = urlParams.get("ref") || null;
 
 async function ensureReferralCode(userId) {
-  // Get existing code if present, else create a new one
-  const { data: existing, error } = await supabase
+  const { data: existing } = await supabase
     .from("users")
     .select("referral_code")
     .eq("id", userId)
     .maybeSingle();
 
-  if (error) {
-  // console.warn("ensureReferralCode fetch error:", error);
-  }
-
   if (existing?.referral_code) return existing.referral_code;
 
-  // generate new short code
-  let code = crypto?.randomUUID?.().slice(0, 8) || Math.random().toString(36).slice(2, 10);
+  let code =
+    crypto?.randomUUID?.().slice(0, 8) ||
+    Math.random().toString(36).slice(2, 10);
 
-  // try to save (retry once if unique constraint fails)
   for (let i = 0; i < 2; i++) {
     const { error: upErr } = await supabase
       .from("users")
@@ -119,7 +115,12 @@ async function ensureReferralCode(userId) {
     if (!upErr) return code;
     code = Math.random().toString(36).slice(2, 10);
   }
-  return code; // best effort
+  return code;
+}
+
+/* ------------------ Helper: detect mobile ------------------ */
+function isMobile() {
+  return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 }
 
 /* ------------------ Main form handling ------------------ */
@@ -134,6 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = document.getElementById("email").value.trim().toLowerCase();
     const password = document.getElementById("password").value.trim();
     const whatsapp = document.getElementById("whatsapp").value.trim();
+    const location = document.getElementById("location").value.trim();
     const manualReferral = document.getElementById("referralCode").value.trim();
     const referrerCode = manualReferral || urlReferrerCode || null;
 
@@ -142,7 +144,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // ensure we have the NGN amount
     if (!nairaAmount) {
       await fetchExchangeRate();
       if (!nairaAmount) {
@@ -151,60 +152,51 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // Load Paystack
     let PaystackPop;
     try {
       PaystackPop = await ensurePaystack();
     } catch (err) {
-  // console.error(err);
       alert("Payment service unavailable.");
       return;
     }
 
-    // 🔐 Initialize Paystack
     const handler = PaystackPop.setup({
-      key: "pk_live_98e672f88208c8d3bb0c4bc7439883ad7e29ad94", // replace for live
+      key: "pk_live_98e672f88208c8d3bb0c4bc7439883ad7e29ad94",
       email: email || "",
       amount: amountInKobo(nairaAmount || 0),
       currency: "NGN",
       ref: `signup_${Date.now()}`,
 
       callback: function (response) {
-        showSpinner(); // Animation
+        showSpinner();
         (async () => {
           const payRef = response?.reference;
           if (!payRef) {
-            // console.error("❌ No payment reference returned");
-            hideSpinner(); // Animation
+            hideSpinner();
             return;
           }
-          if (isPaymentProcessed(payRef)) {
-            // console.warn("⚠ Payment already processed:", payRef);
-            return;
-          }
+          if (isPaymentProcessed(payRef)) return;
 
           try {
-            // 1) Create/Auth the user in Supabase Auth
             let uid = null;
-
-            // Try signUp
-            let { data: signUpData, error: signUpErr } = await supabase.auth.signUp({ email, password });
+            let { data: signUpData, error: signUpErr } =
+              await supabase.auth.signUp({ email, password });
 
             if (signUpErr) {
-              // If email already registered, try signIn
-              if (String(signUpErr.message || "").toLowerCase().includes("already registered")) {
-                const { data: signInData, error: signInErr } = await supabase.auth.signInWithPassword({ email, password });
+              if (
+                String(signUpErr.message || "")
+                  .toLowerCase()
+                  .includes("already registered")
+              ) {
+                const { data: signInData, error: signInErr } =
+                  await supabase.auth.signInWithPassword({ email, password });
                 if (signInErr) {
-                  // console.warn("Sign-in failed; attempting profile fetch fallback:", signInErr);
-                  // Fallback: find an existing profile row by email (last resort)
                   const { data: existingProfile } = await supabase
                     .from("users")
                     .select("id")
                     .eq("email", email)
                     .maybeSingle();
-                  if (existingProfile?.id) {
-                    uid = existingProfile.id;
-                  }
+                  if (existingProfile?.id) uid = existingProfile.id;
                 } else {
                   uid = signInData?.user?.id || null;
                 }
@@ -215,18 +207,14 @@ document.addEventListener("DOMContentLoaded", () => {
               uid = signUpData?.user?.id || null;
             }
 
-            // Ensure we have a uid
             if (!uid) {
               const { data: whoami } = await supabase.auth.getUser();
               uid = whoami?.user?.id || uid;
             }
             if (!uid) throw new Error("Could not determine user ID after payment.");
 
-            // 2) Ensure referral_code for this user
             const myReferralCode = await ensureReferralCode(uid);
 
-            // 3) Upsert user profile (aligns with your table + dashboard.js)
-            const location = document.getElementById("location").value.trim();
             const upsertPayload = {
               id: uid,
               full_name: fullName,
@@ -234,48 +222,49 @@ document.addEventListener("DOMContentLoaded", () => {
               whatsapp,
               location,
               referral_code: myReferralCode,
-              referred_by: referrerCode || null,   // TEXT references users(referral_code)
+              referred_by: referrerCode || null,
               earnings: 0,
               form_purchased: true,
               ref_count: 0,
               created_at: new Date().toISOString(),
             };
 
-            const { error: upsertErr } = await supabase.from("users").upsert(upsertPayload, { onConflict: "id" });
-// 4) If referrer provided, call SQL function for referral reward
-if (referrerCode) {
-  try {
-    const { data, error } = await supabase.rpc("apply_referral_reward", {
-      new_user_id: uid,
-      referrer_code: referrerCode
-    });
+            await supabase.from("users").upsert(upsertPayload, {
+              onConflict: "id",
+            });
 
-    if (error) {
-  // console.error("Referral reward failed:", error);
-      alert("Referral not applied: " + (error.message || "Unknown error"));
-    } else {
-  // console.log("Referral reward success:", data);
-      alert(data?.message || "Referral applied successfully! 🎉");
-    }
-  } catch (err) {
-  // console.error("SQL function referral reward error:", err);
-    alert("Something went wrong applying the referral. Please try again.");
-  }
-}
+            if (referrerCode) {
+              try {
+                const { data, error } = await supabase.rpc(
+                  "apply_referral_reward",
+                  { new_user_id: uid, referrer_code: referrerCode }
+                );
+                if (error) {
+                  alert(
+                    "Referral not applied: " + (error.message || "Unknown error")
+                  );
+                } else {
+                  alert(data?.message || "Referral applied successfully! 🎉");
+                }
+              } catch {
+                alert("Something went wrong applying the referral.");
+              }
+            }
 
-
-
-            // 5) Admin log (optional)
             await supabase.from("admin_logs").insert({
               action: "signup_payment",
-              details: { email, user_id: uid, paystack_ref: payRef, referrer: referrerCode },
+              details: {
+                email,
+                user_id: uid,
+                paystack_ref: payRef,
+                referrer: referrerCode,
+              },
               created_at: new Date().toISOString(),
             });
 
             markPaymentProcessed(payRef);
             window.location.href = "/congrat.html";
           } catch (err) {
-            // console.error("Signup flow failed after payment:", err);
             alert("Signup failed after payment: " + (err?.message || err));
           }
         })();
@@ -286,15 +275,11 @@ if (referrerCode) {
       },
     });
 
-    handler.openIframe();
+    // ✅ Desktop → Inline, Mobile → Redirect
+    if (isMobile()) {
+      handler.open();
+    } else {
+      handler.openIframe();
+    }
   });
 });
-/* ------------------ End of form handling ------------------ */
-
-/* Notes:
- - This example uses Paystack inline JS for payments.
- - In production, ensure to verify payment on server-side via Paystack webhooks.
- - Adjust your Supabase RLS policies to secure your tables appropriately.
- - This code is for demonstration; review and adapt for your use case.
-*/
-
