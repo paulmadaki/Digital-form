@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -15,16 +15,12 @@
 
     <!-- Logo + Brand -->
     <div class="flex flex-col items-start space-y-1">
-      <img 
-        src="images/logo9.png" 
-        alt="PoloTechMedia Logo" 
+      <img src="images/logo9.png" alt="PoloTechMedia Logo" 
         class="h-10 sm:h-14 md:h-16 lg:h-20 w-auto object-contain"/>
      <h1 class="bg-gradient-to-r from-yellow-400 via-white to-indigo-700 bg-clip-text text-transparent font-bold text-3xl tracking-tight">
        PoloTechMedia
      </h1>
-      <h1 class="text-sm sm:text-base font-semibold text-white">
-        Freedom Network
-      </h1>
+      <h1 class="text-sm sm:text-base font-semibold text-white">Freedom Network</h1>
       <p class="text-xs sm:text-sm text-gray-200 italic -mt-1">Empowering Your Digital Journey</p>
     </div>
 
@@ -36,206 +32,342 @@
       <a href="privacy.html" class="hover:text-yellow-400 transition">Privacy Policy</a>
       <a href="login.html" class="hover:text-yellow-400 transition">Login</a>
     </nav>
-
   </div>
 
-   <!-- Navbar container -->
+<!-- Navbar container -->
 <div class="flex items-center justify-between px-4 py-2">
-  
-<!-- Mobile Hamburger (right side) -->
-<button id="menu-btn" 
-  class="md:hidden relative w-8 h-8 flex flex-col justify-center items-center ml-auto group z-50">
-  <span class="absolute w-6 h-0.5 bg-black transition-all duration-300 ease-in-out top-2 group-[.open]:rotate-45 group-[.open]:top-3"></span>
-  <span class="absolute w-6 h-0.5 bg-black transition-all duration-300 ease-in-out top-4 group-[.open]:opacity-0"></span>
-  <span class="absolute w-6 h-0.5 bg-black transition-all duration-300 ease-in-out top-6 group-[.open]:-rotate-45 group-[.open]:top-3"></span>
-</button>
+  <!-- Mobile Hamburger -->
+  <button id="menu-btn" 
+    class="md:hidden relative w-8 h-8 flex flex-col justify-center items-center ml-auto group z-50">
+    <span class="absolute w-6 h-0.5 bg-black transition-all duration-300 ease-in-out top-2 group-[.open]:rotate-45 group-[.open]:top-3"></span>
+    <span class="absolute w-6 h-0.5 bg-black transition-all duration-300 ease-in-out top-4 group-[.open]:opacity-0"></span>
+    <span class="absolute w-6 h-0.5 bg-black transition-all duration-300 ease-in-out top-6 group-[.open]:-rotate-45 group-[.open]:top-3"></span>
+  </button>
 
-<!-- Mobile Menu -->
-<div id="mobile-menu" 
-     class="fixed top-0 right-0 h-full w-64 bg-[#50c878] p-6 space-y-4 transform translate-x-full transition-transform duration-300 ease-in-out z-40">
-  <a href="index.html" class="block text-white hover:underline transition">Home</a>
-  <a href="about.html" class="block text-white hover:underline transition">About</a>
-  <a href="contact.html" class="block text-white hover:underline transition">Contact</a>
-  <a href="privacy.html" class="block text-white hover:underline transition">Privacy Policy</a>
-  <a href="login.html" class="block text-white hover:underline transition">Login</a>
-</div>
-
-<script>
-  // Toggle mobile menu + animate button
-  const menuBtn = document.getElementById('menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-
-  menuBtn.addEventListener('click', () => {
-    menuBtn.classList.toggle('open');
-    mobileMenu.classList.toggle('translate-x-full');  // hide/show
-  });
-</script>
-
-</header>
-
-  <!-- Highlight Section -->
-  <div class="w-full flex justify-center my-4">
-    <span class="bg-green-600 text-white px-6 py-2 rounded-full text-sm md:text-base shadow text-center">
-      OTHERS ALREADY EARNING ONLINE WITH OUR TRUSTED PLATFORM
-    </span>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" 
+       class="fixed top-0 right-0 h-full w-64 bg-[#50c878] p-6 space-y-4 transform translate-x-full transition-transform duration-300 ease-in-out z-40">
+    <a href="index.html" class="block text-white hover:underline transition">Home</a>
+    <a href="about.html" class="block text-white hover:underline transition">About</a>
+    <a href="contact.html" class="block text-white hover:underline transition">Contact</a>
+    <a href="privacy.html" class="block text-white hover:underline transition">Privacy Policy</a>
+    <a href="login.html" class="block text-white hover:underline transition">Login</a>
   </div>
 
-  <!-- Video Section -->
-  <div class="max-w-3xl mx-auto p-6 text-center">
-    <h2 class="text-2xl font-bold text-indigo-400 mb-2">
-      Click to Watch!
-    </h2>
-    <p class="text-gray-300 mb-6">
-      The video below is a short guide that explains how to get started with affiliate marketing.
-    </p>
-
-    <div class="relative pb-[56.25%] h-0 overflow-hidden rounded-lg shadow-lg">
-      <iframe 
-        class="absolute top-0 left-0 w-full h-full rounded-lg" 
-        src="https://www.youtube.com/embed/7vzdpz2xS8s" 
-        title="YouTube video player" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        allowfullscreen>
-      </iframe>
-    </div>
-  </div>
-
-  <!-- Intro Section -->
-  <section class="bg-blue-50 text-gray-800 py-12">
-    <div class="max-w-3xl mx-auto text-center px-4">
-      <h2 class="text-3xl font-bold text-blue-700">What This Project is About</h2>
-      <p class="mt-4 text-lg">
-        Welcome to our community platform!  
-        Here, you can purchase our <span class="font-semibold">$5 digital form to get started.</span>   
-      </p>
-      <p class="mt-2 text-gray-700">
-        Once you buy the form, you’ll have access to exclusive opportunities inside our platform.  
-        You can also refer friends and earn commissions each time they buy. Withdrawals are processed 
-        directly to your local bank account, with real-time exchange rates.  
-      </p>
-      <p class="mt-2 text-gray-700">
-        Payments are secure and powered by Paystack.  
-        Your journey begins here 👇
-      </p>
-    </div>
-  </section>
-
-  <!-- Signup Form -->
-  <div class="max-w-md mx-auto mt-10 bg-white text-gray-800 p-6 rounded shadow">
-    <h1 class="text-xl font-bold text-center mb-6">Create Account</h1>
-
-    <form id="signupForm" class="space-y-4">
-      <input type="text" id="fullName" placeholder="Full Name" required class="w-full p-3 border rounded" />
-      <p class="mt-1 text-xs text-red-500">
-        Please ensure this matches your bank details, otherwise payments cannot be processed
-      </p>
-
-      <input type="email" id="email" placeholder="Email" required class="w-full p-3 border rounded">
-
-      <div class="relative">
-        <input type="password" id="password" placeholder="Password" required class="w-full p-3 border rounded pr-12">
-        <button type="button" id="togglePassword" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 focus:outline-none">
-          Show
-        </button>
-      </div>
-
-      <input type="text" id="referralCode" placeholder="Referral Code (optional)" class="w-full p-3 border rounded">
-      <input type="text" id="whatsapp" placeholder="WhatsApp Number" required class="w-full p-3 border rounded">
-      <input type="text" id="location" placeholder="Location (City, Country)" required class="w-full p-3 border rounded">
-
-      <p class="text-center mb-6 text-sm text-gray-600" id="rateInfo">Fetching current exchange rate...</p>
-  
-      <input type="hidden" id="formPrice" value="5" />
-
-      <button id="paystackBtn" type="submit" 
-        class="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700">
-        Proceed to Payment
-      </button>
-
-      <!-- Mobile Tip -->
-      <div id="mobileTip" 
-        class="block md:hidden mt-3 p-3 rounded-lg bg-blue-50 border border-blue-200 text-sm text-blue-700">
-        💡 On mobile, tap <strong>"Pay with Card"</strong> to enter your card details.
-      </div>
-
-      <p class="text-sm text-gray-600 text-center mt-4">
-        By signing up, you agree to our 
-        <a href="terms.html" class="text-blue-600 underline">Terms of Service</a>.
-      </p>
-    </form>
-
-    <p class="text-center mt-4">
-      Already have an account? 
-      <a href="login.html" class="text-blue-600 underline">Login</a>
-    </p>
-  </div>
-
-  <!-- Scripts -->
-  <script type="module" src="./js/form.js"></script>
-  
   <script>
-    // Show/hide password functionality
-    const passwordInput = document.getElementById('password');
-    const togglePassword = document.getElementById('togglePassword');
-    togglePassword.addEventListener('click', function () {
-      const type = passwordInput.type === 'password' ? 'text' : 'password';
-      passwordInput.type = type;
-      this.textContent = type === 'password' ? 'Show' : 'Hide';
+    // Toggle mobile menu
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('open');
+      mobileMenu.classList.toggle('translate-x-full');
     });
   </script>
+</div>
+</header>
 
-  <!-- Loading Spinner -->
-  <div id="loading-spinner" style="display: none;">
-    <div class="spinner"></div>
+<!-- Highlight Section -->
+<div class="w-full flex justify-center my-4">
+  <span class="bg-green-600 text-white px-6 py-2 rounded-full text-sm md:text-base shadow text-center">
+    OTHERS ALREADY EARNING ONLINE WITH OUR TRUSTED PLATFORM
+  </span>
+</div>
+
+<!-- Video Section -->
+<div class="max-w-3xl mx-auto p-6 text-center">
+  <h2 class="text-2xl font-bold text-indigo-400 mb-2">Click to Watch!</h2>
+  <p class="text-gray-300 mb-6">The video below is a short guide that explains how to get started with affiliate marketing.</p>
+
+  <div class="relative pb-[56.25%] h-0 overflow-hidden rounded-lg shadow-lg">
+    <iframe class="absolute top-0 left-0 w-full h-full rounded-lg" 
+      src="https://www.youtube.com/embed/7vzdpz2xS8s" 
+      title="YouTube video player" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
   </div>
+</div>
 
-  <style>
-    #loading-spinner {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.8);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
+<!-- Intro Section -->
+<section class="bg-blue-50 text-gray-800 py-12">
+  <div class="max-w-3xl mx-auto text-center px-4">
+    <h2 class="text-3xl font-bold text-blue-700">What This Project is About</h2>
+    <p class="mt-4 text-lg">Welcome to our community platform!  
+      Here, you can purchase our <span class="font-semibold">$5 digital form to get started.</span>
+    </p>
+    <p class="mt-2 text-gray-700">
+      Once you buy the form, you’ll have access to exclusive opportunities inside our platform.  
+      You can also refer friends and earn commissions each time they buy. Withdrawals are processed 
+      directly to your local bank account, with real-time exchange rates.
+    </p>
+    <p class="mt-2 text-gray-700">Payments are secure and powered by Paystack. Your journey begins here 👇</p>
+  </div>
+</section>
 
-    .spinner {
-      border: 8px solid #f3f3f3;
-      border-top: 8px solid #3498db;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      animation: spin 1s linear infinite;
-    }
+<!-- Signup Form -->
+<div class="max-w-md mx-auto mt-10 bg-white text-gray-800 p-6 rounded shadow">
+  <h1 class="text-xl font-bold text-center mb-6">Create Account</h1>
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-  </style>
+  <form id="signupForm" class="space-y-4">
+    <input type="text" id="fullName" placeholder="Full Name" required class="w-full p-3 border rounded" />
+    <p class="mt-1 text-xs text-red-500">
+      Please ensure this matches your bank details, otherwise payments cannot be processed
+    </p>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 mt-12">
-    <div class="max-w-6xl mx-auto px-6 py-8 text-center text-gray-400">
-      <p class="text-lg font-semibold text-white">
-        © 2025. 
-        <strong class="text-1xl md:text-1xl font-extrabold bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-          Freedom Network
-        </strong>
-      </p>
-      <p class="mt-2">A project by 
-        <a href="https://polotechmedia.com" target="_blank" 
-           class="text-blue-400 hover:underline font-medium">
-           Polo Tech and Media Enterprise
-        </a>
-      </p>
+    <input type="email" id="email" placeholder="Email" required class="w-full p-3 border rounded">
+
+    <!-- Password Input + Toggle -->
+    <div class="relative">
+      <input type="password" id="password" placeholder="Password" required class="w-full p-3 border rounded pr-12">
+      <button type="button" id="togglePassword" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">Show</button>
     </div>
-  </footer>
- 
+
+    <!-- Password Strength Meter -->
+    <div class="h-2 w-full bg-gray-200 rounded">
+      <div id="strengthBar" class="h-2 rounded bg-red-500 w-1/4"></div>
+    </div>
+    <p id="strengthText" class="text-xs mt-1 text-gray-600"></p>
+
+    <!-- Confirm Password -->
+    <input type="password" id="confirmPassword" placeholder="Confirm Password" required class="w-full p-3 border rounded">
+    <p id="confirmMessage" class="text-xs mt-1"></p>
+
+    <!-- Validation Error (inline) -->
+    <p id="formError" class="text-xs mt-2 text-red-600 text-center"></p>
+
+    <input type="text" id="referralCode" placeholder="Referral Code (optional)" class="w-full p-3 border rounded">
+    <input type="text" id="whatsapp" placeholder="WhatsApp Number" required class="w-full p-3 border rounded">
+    <input type="text" id="location" placeholder="Location (City, Country)" required class="w-full p-3 border rounded">
+
+    <p class="text-center mb-6 text-sm text-gray-600" id="rateInfo">Fetching current exchange rate...</p>
+    <input type="hidden" id="formPrice" value="5" />
+
+    <button id="paystackBtn" type="submit" 
+      class="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700 disabled:opacity-50">
+      Proceed to Payment
+    </button>
+
+    <!-- Mobile Tip -->
+    <div id="mobileTip" class="block md:hidden mt-3 p-3 rounded-lg bg-blue-50 border border-blue-200 text-sm text-blue-700">
+      💡 On mobile, tap <strong>"Pay with Card"</strong> to enter your card details.
+    </div>
+
+    <p class="text-sm text-gray-600 text-center mt-4">
+      By signing up, you agree to our 
+      <a href="terms.html" class="text-blue-600 underline">Terms of Service</a>.
+    </p>
+  </form>
+
+  <p class="text-center mt-4">Already have an account? 
+    <a href="login.html" class="text-blue-600 underline">Login</a>
+  </p>
+</div>
+
+<!-- Keep your module script that likely contains Paystack logic -->
+<script type="module" src="./js/form.js"></script>
+
+<!-- ===== Inline validation + helpers (merged + robust) ===== -->
+<script>
+  // Cache DOM nodes
+  const form = document.getElementById('signupForm');
+  const passwordInput = document.getElementById('password');
+  const togglePassword = document.getElementById('togglePassword');
+  const strengthBar = document.getElementById('strengthBar');
+  const strengthText = document.getElementById('strengthText');
+  const confirmPassword = document.getElementById('confirmPassword');
+  const confirmMessage = document.getElementById('confirmMessage');
+  const paystackBtn = document.getElementById('paystackBtn');
+  const formError = document.getElementById('formError');
+
+  // Current numeric strength value (0..4)
+  let currentStrength = 0;
+
+  // --- initialize: disable pay button until valid ---
+  paystackBtn.disabled = true;
+
+  // ===== Show/Hide Password (original behaviour) =====
+  togglePassword.addEventListener('click', function () {
+    const type = passwordInput.type === 'password' ? 'text' : 'password';
+    passwordInput.type = type;
+    this.textContent = type === 'password' ? 'Show' : 'Hide';
+  });
+
+  // Helper to compute strength numeric value
+  function computeStrength(val) {
+    let s = 0;
+    if (val.length >= 8) s++;                     // length rule
+    if (/[A-Z]/.test(val)) s++;                   // uppercase
+    if (/[0-9]/.test(val)) s++;                   // number
+    if (/[^A-Za-z0-9]/.test(val)) s++;            // special char
+    return s;
+  }
+
+  // Helper: update UI based on strength numeric value
+  function renderStrength(s) {
+    // Reset classes first
+    strengthBar.className = 'h-2 rounded transition-all';
+    if (!s) {
+      strengthBar.style.width = '0%';
+      strengthText.textContent = '';
+      strengthBar.classList.add('bg-red-500'); // keep a default color
+      return;
+    }
+    if (s === 1) {
+      strengthBar.style.width = '25%';
+      strengthBar.classList.add('bg-red-500');
+      strengthText.textContent = 'Weak';
+    } else if (s === 2) {
+      strengthBar.style.width = '50%';
+      strengthBar.classList.add('bg-yellow-500');
+      strengthText.textContent = 'Moderate';
+    } else if (s === 3) {
+      strengthBar.style.width = '75%';
+      strengthBar.classList.add('bg-blue-500');
+      strengthText.textContent = 'Strong';
+    } else if (s === 4) {
+      strengthBar.style.width = '100%';
+      strengthBar.classList.add('bg-green-500');
+      strengthText.textContent = 'Very Strong';
+    }
+  }
+
+  // Helper: whether current form state is valid to proceed
+  // NOTE: we require at least "Strong" (numeric >= 3). Change threshold here if you want "Moderate" allowed.
+  function isValidToProceed() {
+    return currentStrength >= 3 && passwordInput.value === confirmPassword.value && passwordInput.value.length > 0;
+  }
+
+  // Update the pay button and inline error in real-time
+  function updateFormState() {
+    if (isValidToProceed()) {
+      paystackBtn.disabled = false;
+      formError.textContent = '';
+      formError.className = 'text-xs mt-2 text-green-600 text-center';
+    } else {
+      paystackBtn.disabled = true;
+      // If passwords don't match, show that message (higher priority)
+      if (confirmPassword.value.length > 0 && confirmPassword.value !== passwordInput.value) {
+        formError.textContent = '⚠️ Passwords do not match.';
+        formError.className = 'text-xs mt-2 text-red-600 text-center';
+      } else if (currentStrength < 3) {
+        // If strength is low (or empty)
+        if (passwordInput.value.length === 0) {
+          formError.textContent = '';
+        } else {
+          formError.textContent = '⚠️ Password is too weak. Use at least 8 chars, uppercase, number and symbol.';
+          formError.className = 'text-xs mt-2 text-red-600 text-center';
+        }
+      } else {
+        formError.textContent = '';
+      }
+    }
+  }
+
+  // ===== Password strength input handler =====
+  passwordInput.addEventListener('input', () => {
+    const val = passwordInput.value;
+    currentStrength = computeStrength(val);
+    renderStrength(currentStrength);
+    // also update confirm message (in case they already typed confirm)
+    if (confirmPassword.value.length > 0) {
+      if (confirmPassword.value === passwordInput.value) {
+        confirmMessage.textContent = "✅ Passwords match";
+        confirmMessage.className = "text-xs mt-1 text-green-600";
+      } else {
+        confirmMessage.textContent = "❌ Passwords do not match";
+        confirmMessage.className = "text-xs mt-1 text-red-600";
+      }
+    }
+    updateFormState();
+  });
+
+  // ===== Confirm password input handler =====
+  confirmPassword.addEventListener('input', () => {
+    if (confirmPassword.value === passwordInput.value) {
+      confirmMessage.textContent = "✅ Passwords match";
+      confirmMessage.className = "text-xs mt-1 text-green-600";
+    } else {
+      confirmMessage.textContent = "❌ Passwords do not match";
+      confirmMessage.className = "text-xs mt-1 text-red-600";
+    }
+    updateFormState();
+  });
+
+  // ===== Prevent other scripts (like Paystack) from running if invalid =====
+  // Capture-phase click handler on the submit button — runs before most other listeners.
+  paystackBtn.addEventListener('click', function (e) {
+    // If not valid, stop everything (prevent opening Paystack)
+    if (!isValidToProceed()) {
+      e.preventDefault();
+      e.stopImmediatePropagation(); // block other click handlers on this button
+      updateFormState();
+      return false;
+    }
+    // If valid, allow the click — Paystack code (from form.js) can run.
+  }, true); // <-- use capture to be robust
+
+  // ===== Final safety: capture-phase submit handler on form =====
+  form.addEventListener('submit', function (e) {
+    if (!isValidToProceed()) {
+      e.preventDefault(); // stops the submit (and prevents Paystack from being invoked)
+      updateFormState();
+    } else {
+      // form is valid; allow normal submit so your ./js/form.js logic can run
+    }
+  }, true); // capture so it runs before many other listeners
+
+  // Optional: clear error when user focuses fields
+  [passwordInput, confirmPassword].forEach(el => {
+    el.addEventListener('focus', () => {
+      if (formError.textContent) {
+        // small UX: keep message but it's okay to clear while editing
+        formError.textContent = '';
+      }
+    });
+  });
+
+</script>
+
+<!-- Loading Spinner -->
+<div id="loading-spinner" style="display: none;">
+  <div class="spinner"></div>
+</div>
+
+<style>
+  #loading-spinner {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 9999;
+  }
+  .spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 60px; height: 60px;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+
+<!-- Footer -->
+<footer class="bg-gray-900 mt-12">
+  <div class="max-w-6xl mx-auto px-6 py-8 text-center text-gray-400">
+    <p class="text-lg font-semibold text-white">
+      © 2025. <strong class="text-1xl md:text-1xl font-extrabold bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">Freedom Network</strong>
+    </p>
+    <p class="mt-2">A project by 
+      <a href="https://polotechmedia.com" target="_blank" class="text-blue-400 hover:underline font-medium">
+        Polo Tech and Media Enterprise
+      </a>
+    </p>
+  </div>
+</footer>
 </body>
 </html>
